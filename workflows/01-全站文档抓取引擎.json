@@ -1,0 +1,114 @@
+{
+  "name": "第一步 全站文档抓取引擎｜一次获取 n8n 全部内容",
+  "nodes": [
+    {
+      "parameters": {
+        "url": "https://docs.n8n.io/",
+        "options": {}
+      },
+      "id": "c2328aef-6944-4cfd-9195-c6629cc35d49",
+      "cid": "Ikx1Y2FzIFBleXJpbiI",
+      "name": "Get All n8n Documentation Links",
+      "type": "n8n-nodes-base.httpRequest",
+      "creator": "Lucas Peyrin",
+      "position": [
+        176,
+        -96
+      ],
+      "typeVersion": 4.2,
+      "notes": "© 2025 Lucas Peyrin"
+    },
+    {
+      "parameters": {
+        "operation": "extractHtmlContent",
+        "extractionValues": {
+          "values": [
+            {
+              "key": "links",
+              "cssSelector": "a",
+              "returnValue": "attribute",
+              "attribute": "href",
+              "returnArray": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "91f4be67-c9f4-4598-a9eb-1d516798610a",
+      "cid": "Ikx1Y2FzIFBleXJpbiI",
+      "name": "Extract Links from HTML",
+      "type": "n8n-nodes-base.html",
+      "creator": "Lucas Peyrin",
+      "position": [
+        464,
+        -96
+      ],
+      "typeVersion": 1.2,
+      "notes": "© 2025 Lucas Peyrin"
+    },
+    {
+      "parameters": {},
+      "id": "89b13b5b-a5b9-4d7c-aa79-0527e0ff9926",
+      "cid": "Ikx1Y2FzIFBleXJpbiI",
+      "name": "Start Indexing",
+      "type": "n8n-nodes-base.manualTrigger",
+      "creator": "Lucas Peyrin",
+      "position": [
+        -64,
+        -96
+      ],
+      "typeVersion": 1,
+      "notes": "© 2025 Lucas Peyrin"
+    },
+    {
+      "parameters": {
+        "content": "## 第一步 全站文档抓取引擎｜一次获取 n8n 全部内容",
+        "height": 336,
+        "width": 896
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -128,
+        -192
+      ],
+      "id": "bb041f1e-6ed8-4581-a512-23ced511e5d2",
+      "name": "Sticky Note"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Get All n8n Documentation Links": {
+      "main": [
+        [
+          {
+            "node": "Extract Links from HTML",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Start Indexing": {
+      "main": [
+        [
+          {
+            "node": "Get All n8n Documentation Links",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "ca63ff3b-89d0-426d-8863-4404ecd12cbf",
+  "meta": {
+    "instanceId": "a91546b11849947924962cb83081978a72b26c591d9cf30e6cd7a43a2cf78b99"
+  },
+  "id": "Y0xtXFMMVXdJqVgK",
+  "tags": []
+}
